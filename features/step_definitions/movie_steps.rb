@@ -9,16 +9,6 @@ Given /the following movies exist/ do |movies_table|
   #flunk "Unimplemented"
 end
 
-# Make sure that one string (regexp) occurs before or after another one
-#   on the same page
-
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
- 
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
-end
-
 When /^I (uncheck|check) the following ratings: (.*)$/ do |uncheck, rating_list|
   rating_list.split(',').each do |field|
     field = "ratings_" + field.to_s.gsub(/'|\s/,'')
@@ -54,4 +44,18 @@ end
 
 Then /^movies should be sorted by 'release_date'$/ do
   pending # express the regexp above with the code you wish you had
+end
+
+
+# Make sure that one string (regexp) occurs before or after another one
+#   on the same page
+
+#"Then I should see 'Aladdin' before 'Amelie'." 
+Then /^I should see '(.*)' before '(.*)'$/ do |e1, e2|
+  #assert page.body.index(e1) < page.body.index(e2), 'sorting not working !'
+  match = /#{e1}.*#{e2}/m =~ page.body
+
+  #  ensure that that e1 occurs before e2.
+  #  page.body is the entire content of the page as a string.
+  #flunk "Unimplemented"
 end

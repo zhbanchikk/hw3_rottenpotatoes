@@ -22,13 +22,18 @@ Background: movies have been added to database
   And I am on the RottenPotatoes home page
 
 Scenario: sort movies alphabetically
-  When I follow "Movie Title"
+  When I check all ratings
+  And I press 'ratings_submit'
+  And I follow "Movie Title"
   # your steps here
-  Then I should be on the RottenPotatoes home page
-  And movies should be sorted by 'title'
+  Then I should see 'Aladdin' before 'The Terminator'
+  Then I should see 'Chocolat' before 'Raiders of the Lost Ark'
+
 
 Scenario: sort movies in increasing order of release date
-  When I follow "Release Date"
+  When I check all ratings
+  And I press 'ratings_submit'
+  And I follow "Release Date"
   # your steps here
-  Then I should be on the RottenPotatoes home page
-  And movies should be sorted by 'release_date'
+  Then I should see '26-Oct-1984' before '25-Nov-1992'
+  Then I should see '6-Apr-1968' before '21-Jun-2000'
