@@ -59,3 +59,7 @@ Then /^I should see '(.*)' before '(.*)'$/ do |e1, e2|
   #  page.body is the entire content of the page as a string.
   #flunk "Unimplemented"
 end
+
+Then /^the director of "(.*?)" should be "(.*?)"$/ do |arg1, arg2|
+  match = Movie.find_by_title(arg1).director =~ /arg2/ # express the regexp above with the code you wish you had
+end
